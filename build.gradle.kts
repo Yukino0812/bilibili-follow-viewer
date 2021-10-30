@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.5.31"
-    id("org.jetbrains.compose") version "1.0.0-alpha4-build398"
+    id("org.jetbrains.compose") version "1.0.0-beta3"
 }
 
 group = "me.yukino"
@@ -27,13 +27,15 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "16"
 }
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "me.yukino.followviewer.v.MainKt"
         nativeDistributions {
+            includeAllModules = true
+
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "bilibili-follow-viewer"
             packageVersion = "1.0.0"
